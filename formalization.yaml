@@ -1,0 +1,118 @@
+version: "v0.4"
+project:
+  name: "Erdos 610: clique transversal bounds"
+  description: >-
+    Incomplete formalization of the uniform bounds in Erdos Problem 610.
+    A clique transversal meets every nontrivial inclusion-maximal clique,
+    ignoring isolated vertices. Eight supporting lemmas are proved; both
+    original questions and two additional research bounds remain unproved.
+  authors: ["Alexander"]
+  license: "Apache-2.0"
+  responsible_maintainers: ["Alexander"]
+classification:
+  arxiv: ["math.CO"]
+  msc2020: ["05C35", "05C69"]
+sources:
+  - title: "Erdos Problem 610"
+    contributors:
+      - name: "Thomas F. Bloom"
+        role: "problem-page editor"
+    type: "web page"
+    location: "https://www.erdosproblems.com/610"
+    relationship: "formalizes"
+    note: "Both questions are stated, together with the earlier and matching bounds."
+  - title: "Covering the cliques of a graph with vertices"
+    authors: ["Paul Erdos", "Tibor Gallai", "Zsolt Tuza"]
+    type: "article"
+    id: "doi:10.1016/0012-365X(92)90681-5"
+    location: "https://doi.org/10.1016/0012-365X(92)90681-5"
+    relationship: "formalizes"
+    note: "Discrete Mathematics (1992), 279-289; earlier upper-bound statement only."
+    author_endorsement: "not-contacted"
+  - title: "Tight Bounds on the Clique Chromatic Number"
+    authors: ["Gwenael Joret", "Piotr Micek", "Bruce Reed", "Michiel Smid"]
+    type: "article"
+    id: "arXiv:2006.11353v2"
+    location: "https://arxiv.org/abs/2006.11353v2"
+    relationship: "background"
+    note: >-
+      Published source of the reported positive answer. The August 2026
+      forum discussion reports a proof gap. This project does not resolve
+      that issue, formalize this paper's proof, or assume its result as an axiom.
+    author_endorsement: "not-contacted"
+  - title: "The Ramsey number R(3,t) has order of magnitude t^2/log t"
+    authors: ["Jeong Han Kim"]
+    type: "article"
+    location: "Random Structures and Algorithms (1995), 173-207"
+    relationship: "background"
+    note: "Source of the matching lower bound; no Ramsey theorem is proved here."
+    author_endorsement: "not-contacted"
+  - title: "Reported gap in the proof of the JMRS21 bound"
+    type: "web discussion"
+    location: "https://www.erdosproblems.com/forum/thread/610#post-8594"
+    relationship: "background"
+    note: "A reported proof gap is not a counterexample to the theorem."
+related_formalizations:
+  - id: "https://github.com/AItoBit/formal-conjectures/tree/1584447424bec3db6589383ce59a2798c2010ce7"
+    relationship: "adapts"
+    note: >-
+      All four target statements, both definitions, and all eight supporting
+      proofs are ported from this Apache-2.0 contribution. They are included
+      here as source; this is not an import-only comparison wrapper.
+status:
+  scope: >-
+    Eight basic API lemmas are proved. Four research declarations still use
+    sorry. No complete solution, passing full Palomar preflight, Palomar
+    submission, or registry entry is claimed. The listed dependencies include
+    the known sorryAx blocker; CI reports dependencies of all twelve theorems.
+  sorry_count: 4
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound", "sorryAx"]
+automation:
+  methods:
+    - method: "agent"
+      models: ["GPT-6"]
+      framework: "Codex"
+      tool_setup: "Lean, Mathlib, gh, source inspection and independent agent audit"
+  notes: >-
+    Alexander directed the project and confirmed author and maintainer credit.
+    Codex generated the Lean code and packaging. Mathematical-source authors
+    are credited separately. No human mathematical review is claimed.
+fidelity:
+  divergences: >-
+    No target is weakened. FC answer(True) elaborators become literal True,
+    preserving their propositions. The bounds retain eventual quantifiers
+    and constants uniform over graphs. Isolated vertices are excluded.
+    Four proofs remain incomplete, and the published-proof concern is unresolved.
+review:
+  status: "agent-reviewed statements; research proofs incomplete"
+  reviewers: []
+  notes: >-
+    A separate Codex agent audited the original FC statement against the
+    supplied source, the JMRS paper and the later gap discussion. The check
+    covered maximality, nontrivial cliques, minimum attainment, uniformity
+    and boundary cases. No Palomar editorial review has occurred.
+alignment:
+  namespace: "Erdos610"
+  statements:
+    - source: "Erdos 610, first question"
+      lean: "Erdos610.erdos_610.parts.i"
+      module: "Solution"
+      status: "unproved"
+      note: "One function tending to infinity, uniform over all sufficiently large graphs."
+    - source: "Erdos 610, sharper question"
+      lean: "Erdos610.erdos_610.parts.ii"
+      module: "Solution"
+      status: "unproved"
+      note: "One positive constant in the square-root n log n improvement."
+    - source: "Erdos-Gallai-Tuza 1992"
+      lean: "Erdos610.erdos_610.variants.erdos_gallai_tuza"
+      module: "Solution"
+      status: "unproved"
+      note: "One additive constant in the square-root 2n upper bound."
+    - source: "Kim 1995 and the consequence recorded on the problem page"
+      lean: "Erdos610.erdos_610.variants.lower_bound"
+      module: "Solution"
+      status: "unproved"
+      note: "Existence of graphs of every sufficiently large order with the matching lower bound."
+acknowledgements: "Formal Conjectures, Lean, Mathlib and the independent Codex statement auditor."

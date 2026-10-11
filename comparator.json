@@ -1,0 +1,24 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Erdos610.erdos_610.parts.i",
+    "Erdos610.erdos_610.parts.ii",
+    "Erdos610.erdos_610.variants.erdos_gallai_tuza",
+    "Erdos610.erdos_610.variants.lower_bound",
+    "SimpleGraph.isCliqueTransversal_univ",
+    "SimpleGraph.isCliqueTransversal_bot",
+    "SimpleGraph.cliqueTransversalNum_le_card",
+    "SimpleGraph.exists_cliqueTransversal_card_eq",
+    "SimpleGraph.cliqueTransversalNum_le_iff",
+    "SimpleGraph.cliqueTransversalNum_le_card_univ",
+    "SimpleGraph.cliqueTransversalNum_bot",
+    "SimpleGraph.cliqueTransversalNum_of_isEmpty"
+  ],
+  "definition_names": [
+    "SimpleGraph.IsCliqueTransversal",
+    "SimpleGraph.cliqueTransversalNum"
+  ],
+  "permitted_axioms": ["propext", "Classical.choice", "Quot.sound"],
+  "enable_nanoda": true
+}
